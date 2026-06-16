@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Munyal — AI receptionist for Sydney tradies. 10 jobs in 90 days, or first month free.</title>
+  <meta name="description" content="We answer your missed calls in 30 seconds, qualify the customer, and book the job straight into your calendar. The 10/90 Job-Book Guarantee: we book 10 jobs in 90 days, or your first month is free." />
+  <link rel="canonical" href="https://munyal-tradie.vercel.app/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0A9688" />
+  <meta property="og:title" content="Munyal — AI receptionist for Sydney tradies. 10/90 guarantee." />
+  <meta property="og:description" content="Stop losing 4–6 jobs a month to missed calls. We answer in 30 seconds, qualify the customer, and book the job. 10 jobs in 90 days, or your first month is free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://munyal-tradie.vercel.app/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="geo.region" content="AU-NSW" />
+  <meta name="geo.placename" content="Sydney" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" /></noscript>
+
+  <style>
+    :root {
+      --bg: #0A0A0B;
+      --bg-2: #0E0E10;
+      --ink: #FAFAFA;
+      --ink-2: #A1A1AA;
+      --ink-3: #71717A;
+      --line: rgba(255,255,255,0.08);
+      --line-2: rgba(255,255,255,0.12);
+      --accent: #0A9688;
+      --accent-2: #14C2A8;
+      --accent-glow: rgba(20, 194, 168, 0.18);
+      --warn: #F4B400;
+      --max: 1180px;
+      --pad: clamp(20px, 4vw, 40px);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --display: 'Outfit', system-ui, -apple-system, sans-serif;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      font-feature-settings: 'cv11', 'ss01';
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(10, 10, 11, 0.65);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+    }
+    .nav.scrolled { border-bottom-color: var(--line); background: rgba(10, 10, 11, 0.85); }
+    .nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+    .nav-mark {
+      width: 26px; height: 26px; border-radius: 7px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset, 0 0 20px var(--accent-glow);
+      position: relative;
+    }
+    .nav-mark::after {
+      content: '';
+      position: absolute; inset: 5px;
+      border-radius: 4px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+    }
+    .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14px; color: var(--ink-2); }
+    .nav-links a { transition: color 0.2s var(--ease); }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line-2);
+      border-radius: 8px;
+      color: var(--ink);
+      font-weight: 500;
+      transition: all 0.2s var(--ease);
+    }
+    .nav-cta:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* Container */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* Section base */
+    section { position: relative; padding: clamp(80px, 12vh, 140px) 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500;
+      color: var(--accent-2);
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: ''; width: 18px; height: 1px; background: var(--accent-2);
+    }
+    h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; margin: 0; }
+    h1 { font-size: clamp(44px, 6.4vw, 84px); }
+    h2 { font-size: clamp(34px, 4.6vw, 56px); letter-spacing: -0.022em; }
+    h3 { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -0.015em; }
+    p { margin: 0; }
+    .lede { font-size: clamp(17px, 1.4vw, 20px); color: var(--ink-2); line-height: 1.55; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 22px;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: all 0.2s var(--ease);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #001A18;
+      box-shadow: 0 0 0 1px rgba(20, 194, 168, 0.4), 0 10px 30px -8px var(--accent-glow);
+    }
+    .btn-primary:hover { background: var(--accent-2); transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(20, 194, 168, 0.6), 0 14px 40px -8px var(--accent-glow); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line-2);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.2); }
+    .arrow { display: inline-block; transition: transform 0.2s var(--ease); }
+    .btn:hover .arrow { transform: translateX(3px); }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero-canvas {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 980px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px 6px 8px;
+      background: rgba(20, 194, 168, 0.08);
+      border: 1px solid rgba(20, 194, 168, 0.25);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-2);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 12px var(--accent-2); animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 { margin-bottom: 24px; }
+    .hero h1 .accent { color: var(--accent-2); }
+    .hero-lede { max-width: 640px; margin-bottom: 36px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 24px 36px; color: var(--ink-3); font-size: 14px; }
+    .hero-trust span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-trust svg { width: 14px; height: 14px; color: var(--accent-2); }
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: var(--ink-3); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .hero-scroll .line { width: 1px; height: 40px; background: linear-gradient(180deg, var(--ink-3), transparent); position: relative; overflow: hidden; }
+    .hero-scroll .line::after {
+      content: ''; position: absolute; top: -20px; left: 0; width: 100%; height: 20px;
+      background: var(--accent-2);
+      animation: scroll-line 2.4s var(--ease) infinite;
+    }
+    @keyframes scroll-line { 0% { transform: translateY(0); } 100% { transform: translateY(60px); } }
+    @media (max-width: 720px) { .hero-scroll { display: none; } }
+
+    /* ===================== TRUST STRIP ===================== */
+    .trust-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0;
+      background: var(--bg-2);
+    }
+    .trust-strip-inner { display: flex; align-wrap: wrap; gap: 28px 56px; align-items: center; justify-content: center; flex-wrap: wrap; color: var(--ink-3); font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .trust-strip-inner strong { color: var(--ink); font-weight: 600; }
+
+    /* ===================== SECTION HEADER ===================== */
+    .section-head { max-width: 720px; margin-bottom: 64px; }
+    .section-head h2 { margin-bottom: 16px; }
+    .section-head .lede { color: var(--ink-2); }
+
+    /* ===================== PAIN AMPLIFIER ===================== */
+    .pain { background: var(--bg); }
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 880px) { .pain-grid { grid-template-columns: 1fr; } }
+    .pain-card {
+      padding: 32px 28px;
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: all 0.3s var(--ease);
+      position: relative;
+    }
+    .pain-card:hover { border-color: var(--line-2); transform: translateY(-2px); }
+    .pain-num {
+      font-family: var(--display); font-weight: 700; font-size: 14px;
+      color: var(--accent-2);
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pain-num::after { content: ''; flex: 1; height: 1px; background: var(--line-2); }
+    .pain-card h3 { font-size: 24px; margin-bottom: 12px; }
+    .pain-card p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+    .pain-stat { margin-top: 24px; padding-top: 20px; border-top: 1px dashed var(--line-2); font-family: var(--display); font-weight: 600; font-size: 28px; color: var(--ink); letter-spacing: -0.02em; }
+    .pain-stat-label { display: block; font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--ink-3); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 4px; }
+
+    /* ===================== HOW IT WORKS ===================== */
+    .how { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    @media (max-width: 880px) { .how-grid { grid-template-columns: 1fr; } }
+    .how-step {
+      padding: 40px 32px;
+      border-right: 1px solid var(--line);
+      position: relative;
+      background: var(--bg);
+      transition: background 0.3s var(--ease);
+    }
+    .how-step:last-child { border-right: 0; }
+    .how-step:hover { background: var(--bg-2); }
+    @media (max-width: 880px) { .how-step { border-right: 0; border-bottom: 1px solid var(--line); } .how-step:last-child { border-bottom: 0; } }
+    .how-step-num { font-family: var(--display); font-weight: 700; font-size: 13px; color: var(--ink-3); letter-spacing: 0.1em; margin-bottom: 32px; }
+    .how-step h3 { font-size: 22px; margin-bottom: 14px; }
+    .how-step p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+    .how-step .time { display: inline-flex; align-items: center; gap: 6px; margin-top: 24px; padding: 6px 12px; background: rgba(20, 194, 168, 0.08); border: 1px solid rgba(20, 194, 168, 0.2); border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--accent-2); }
+
+    /* ===================== GUARANTEE ===================== */
+    .guarantee { background: var(--bg); position: relative; overflow: hidden; }
+    .guarantee::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--accent-glow), transparent 60%);
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .guarantee-inner { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; text-align: center; }
+    .guarantee-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 16px;
+      background: rgba(20, 194, 168, 0.1);
+      border: 1px solid rgba(20, 194, 168, 0.3);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-2);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .guarantee-headline {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px;
+    }
+    .guarantee-headline .num { color: var(--accent-2); }
+    .guarantee-sub {
+      font-size: clamp(18px, 1.6vw, 22px);
+      color: var(--ink-2);
+      max-width: 640px;
+      margin: 0 auto 56px;
+      line-height: 1.5;
+    }
+    .guarantee-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px 32px;
+      max-width: 720px;
+      margin: 0 auto 56px;
+      text-align: left;
+    }
+    @media (max-width: 720px) { .guarantee-points { grid-template-columns: 1fr; } }
+    .guarantee-point { display: flex; gap: 14px; align-items: flex-start; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .guarantee-point svg { flex-shrink: 0; margin-top: 3px; color: var(--accent-2); width: 18px; height: 18px; }
+    .guarantee-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .guarantee-deal {
+      margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line);
+      font-family: var(--display); font-size: 18px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em;
+    }
+
+    /* ===================== INCLUDED ===================== */
+    .included { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .included-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 32px; }
+    @media (max-width: 720px) { .included-grid { grid-template-columns: 1fr; } }
+    .included-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .included-item .icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(20, 194, 168, 0.12);
+      color: var(--accent-2);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+    .included-item .icon svg { width: 12px; height: 12px; }
+    .included-item .icon.no { background: rgba(244, 180, 0, 0.1); color: var(--warn); }
+    .included-item p { font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .included-item strong { color: var(--ink); font-weight: 600; }
+    .included-col-head { grid-column: 1 / -1; font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 24px; margin-bottom: -8px; }
+    .included-col-head:first-of-type { margin-top: 0; }
+    .included-col-head.no { color: var(--ink-3); font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ===================== PRICING ===================== */
+    .pricing { background: var(--bg); }
+    .pricing-card {
+      max-width: 760px; margin: 0 auto;
+      padding: 48px;
+      background: var(--bg-2);
+      border: 1px solid var(--line-2);
+      border-radius: 18px;
+      position: relative;
+    }
+    @media (max-width: 720px) { .pricing-card { padding: 32px 24px; } }
+    .pricing-card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: 18px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(20, 194, 168, 0.4), transparent 50%, rgba(20, 194, 168, 0.2));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .pricing-eyebrow { display: inline-block; padding: 4px 10px; background: rgba(20, 194, 168, 0.1); border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--accent-2); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
+    .pricing-card h3 { font-size: 32px; margin-bottom: 8px; }
+    .pricing-card .pricing-sub { color: var(--ink-2); margin-bottom: 36px; }
+    .pricing-rows { border-top: 1px solid var(--line); }
+    .pricing-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; border-bottom: 1px solid var(--line);
+      gap: 20px;
+    }
+    .pricing-row-label { font-size: 15px; color: var(--ink-2); flex: 1; }
+    .pricing-row-label strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+    .pricing-row-value { font-family: var(--display); font-weight: 700; font-size: 22px; color: var(--ink); white-space: nowrap; letter-spacing: -0.02em; }
+    .pricing-row-value.zero { color: var(--accent-2); }
+    .pricing-row-note { font-size: 12px; color: var(--ink-3); margin-top: 4px; }
+    .pricing-call {
+      margin-top: 32px; padding: 24px; background: rgba(20, 194, 168, 0.05);
+      border: 1px solid rgba(20, 194, 168, 0.15);
+      border-radius: 12px;
+      font-size: 15px; color: var(--ink);
+      line-height: 1.55;
+    }
+    .pricing-call strong { color: var(--accent-2); }
+
+    /* ===================== WHO ===================== */
+    .who { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    @media (max-width: 880px) { .who-grid { grid-template-columns: 1fr; gap: 32px; } }
+    .who-col h3 { font-size: 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .who-col h3 .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .who-col.yes h3 .dot { background: var(--accent-2); box-shadow: 0 0 12px var(--accent-2); }
+    .who-col.no h3 .dot { background: var(--warn); }
+    .who-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+    .who-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .who-list li svg { flex-shrink: 0; margin-top: 4px; width: 16px; height: 16px; }
+    .who-col.yes .who-list li svg { color: var(--accent-2); }
+    .who-col.no .who-list li svg { color: var(--warn); }
+
+    /* ===================== VOICES ===================== */
+    .voices { background: var(--bg); }
+    .voices-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+    .voices-head .section-head { margin-bottom: 0; }
+    .voices-label { font-size: 12px; color: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; }
+    .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 880px) { .voices-grid { grid-template-columns: 1fr; } }
+    .voice {
+      padding: 32px 28px;
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: all 0.3s var(--ease);
+    }
+    .voice:hover { border-color: var(--line-2); }
+    .voice blockquote { margin: 0 0 24px; font-size: 16px; line-height: 1.55; color: var(--ink); }
+    .voice blockquote::before { content: '"'; color: var(--accent-2); font-family: var(--display); font-size: 28px; line-height: 0; margin-right: 4px; vertical-align: -8px; }
+    .voice cite { display: block; font-style: normal; font-size: 13px; color: var(--ink-3); }
+    .voice cite strong { color: var(--ink-2); font-weight: 500; }
+    .voices-note { margin-top: 24px; padding: 16px 20px; background: rgba(255,255,255,0.02); border-left: 2px solid var(--ink-3); border-radius: 0 8px 8px 0; font-size: 13px; color: var(--ink-3); line-height: 1.5; }
+
+    /* ===================== FAQ ===================== */
+    .faq { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .faq-list { max-width: 820px; margin: 0 auto; border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-q {
+      width: 100%;
+      background: none; border: 0; padding: 24px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 24px;
+      color: var(--ink); font-family: var(--display); font-weight: 600; font-size: 18px; letter-spacing: -0.01em;
+      text-align: left;
+      transition: color 0.2s var(--ease);
+    }
+    .faq-q:hover { color: var(--accent-2); }
+    .faq-q .icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--line);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s var(--ease);
+    }
+    .faq-q .icon svg { width: 14px; height: 14px; transition: transform 0.3s var(--ease); }
+    .faq-item.open .faq-q .icon { background: var(--accent); color: #001A18; }
+    .faq-item.open .faq-q .icon svg { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s var(--ease), padding 0.4s var(--ease);
+      color: var(--ink-2); font-size: 15px; line-height: 1.6;
+    }
+    .faq-item.open .faq-a { max-height: 600px; padding: 0 0 28px; }
+
+    /* ===================== FINAL CTA ===================== */
+    .final {
+      background: var(--bg);
+      padding: clamp(100px, 16vh, 180px) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, var(--accent-glow), transparent 60%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .final-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+    .final h2 { font-size: clamp(40px, 5.6vw, 72px); margin-bottom: 24px; }
+    .final-lede { font-size: clamp(17px, 1.4vw, 20px); color: var(--ink-2); margin-bottom: 40px; line-height: 1.5; }
+    .final-ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 32px; }
+    .final-phone { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-3); font-size: 14px; }
+    .final-phone a { color: var(--ink); font-weight: 500; border-bottom: 1px dashed var(--line-2); }
+    .final-phone a:hover { color: var(--accent-2); border-color: var(--accent-2); }
+    .final-divider { margin: 56px auto; max-width: 200px; height: 1px; background: var(--line-2); }
+
+    /* ===================== FOOTER ===================== */
+    .footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+      padding: 64px 0 40px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+    .footer-brand { display: flex; flex-direction: column; gap: 16px; }
+    .footer-brand .nav-mark { width: 32px; height: 32px; border-radius: 8px; }
+    .footer-brand p { font-size: 13px; color: var(--ink-3); line-height: 1.5; max-width: 280px; }
+    .footer-col h4 { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 14px; color: var(--ink-2); transition: color 0.2s var(--ease); }
+    .footer-col a:hover { color: var(--ink); }
+    .footer-bottom { padding-top: 32px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; font-size: 12px; color: var(--ink-3); }
+    .footer-bottom a:hover { color: var(--ink); }
+
+    /* ===================== REVEAL ===================== */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============== NAV ============== -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-brand">
+      <span class="nav-mark"></span>
+      <span>Munyal</span>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#guarantee">Guarantee</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#book" class="nav-cta">Book walkthrough <span class="arrow">→</span></a>
+  </nav>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-eyebrow reveal">
+          <span class="dot"></span>
+          For Sydney tradies · 1–3 crew · $20k–$80k/month
+        </div>
+        <h1 class="reveal reveal-delay-1">
+          Stop losing <span class="accent">4–6 jobs a month</span> to missed calls.
+        </h1>
+        <p class="hero-lede lede reveal reveal-delay-2">
+          We answer your missed calls in 30 seconds, qualify the customer, and book the job straight into your calendar. You turn up and do the work. We don't make money if you don't — that's the deal.
+        </p>
+        <div class="hero-ctas reveal reveal-delay-3">
+          <a href="#book" class="btn btn-primary">Book a 10-min walkthrough <span class="arrow">→</span></a>
+          <a href="#how" class="btn btn-ghost">Not ready to chat? See how it works</a>
+        </div>
+        <div class="hero-trust reveal reveal-delay-4">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Australian-owned · Sydney-based · ACMA-compliant</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Works alongside hipages, Oneflare, ServiceM8, your existing setup</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="line"></div>
+    </div>
+  </section>
+
+  <!-- ============== TRUST STRIP ============== -->
+  <div class="trust-strip">
+    <div class="container">
+      <div class="trust-strip-inner">
+        <span><strong>Indigenous-owned</strong></span>
+        <span><strong>Supply Nation Certified</strong></span>
+        <span><strong>ACMA-compliant</strong></span>
+        <span><strong>Privacy Act 1988</strong></span>
+        <span><strong>ABN 19 728 893 833</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== PAIN ============== -->
+  <section class="pain" id="pain">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The leak</span>
+        <h2>Every missed call is a job someone else books.</h2>
+        <p class="lede">Most tradies lose 4 to 6 jobs a month to voicemail. Each one's worth $1,500 to $8,000. By the time you ring back, they've already booked the next guy.</p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card reveal">
+          <div class="pain-num">01 / The missed call</div>
+          <h3>You're on a job, the phone rings out.</h3>
+          <p>Customer hears voicemail. Rings the next tradie on Google. By the time you call back, the job's gone. No second chance, no reschedule, no chance to quote.</p>
+          <div class="pain-stat">30 sec<span class="pain-stat-label">before they ring the next tradie</span></div>
+        </div>
+        <div class="pain-card reveal reveal-delay-1">
+          <div class="pain-num">02 / The lost revenue</div>
+          <h3>It's not one job. It's one a week.</h3>
+          <p>5 missed calls a week at an average ticket of $3,000 is over $700,000 a year in jobs that hit voicemail before they ever reach your calendar. That's the leak.</p>
+          <div class="pain-stat">$700k+<span class="pain-stat-label">annual revenue leak, per crew</span></div>
+        </div>
+        <div class="pain-card reveal reveal-delay-2">
+          <div class="pain-num">03 / The after-hours bleed</div>
+          <h3>Saturdays, evenings, public holidays.</h3>
+          <p>That's when most tradies miss the most calls. The tradie who picks up at 7pm Saturday is the one who gets the job Monday. The one who doesn't, gets nothing.</p>
+          <div class="pain-stat">24/7<span class="pain-stat-label">we answer while you work, sleep, or take a weekend</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== HOW IT WORKS ============== -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Three steps. We do the work. You collect the jobs.</h2>
+        <p class="lede">No call centre. No offshore scripts. No portal to log into. We connect to your phone, build the system, and run it. You keep doing what you're doing.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-step reveal">
+          <div class="how-step-num">STEP 01 / SETUP</div>
+          <h3>We connect to your phone and calendar.</h3>
+          <p>We wire missed-call text-back to your number, build your voice receptionist, and connect your calendar. You keep your number. We answer the calls you're missing. Takes 30 minutes of your time.</p>
+          <span class="time">⏱ 30 min of your time · Live in 1–2 weeks</span>
+        </div>
+        <div class="how-step reveal reveal-delay-1">
+          <div class="how-step-num">STEP 02 / CAPTURE</div>
+          <h3>We pick up. We qualify. We book.</h3>
+          <p>When a call rings out after hours, on the weekend, or while you're on a job — we answer in 30 seconds. We qualify the customer (location, scope, budget window). We book the job into your calendar. You get an SMS with the customer's name, number, and what they want.</p>
+          <span class="time">⏱ 30-second response, every time</span>
+        </div>
+        <div class="how-step reveal reveal-delay-2">
+          <div class="how-step-num">STEP 03 / FOLLOW-THROUGH</div>
+          <h3>Quotes followed up. Reviews collected.</h3>
+          <p>Every quote you send gets a 24-hour, 72-hour, and 7-day follow-up. Every completed job gets a Google review request 2 hours later. You get a live dashboard showing every call, every booking, every review.</p>
+          <span class="time">⏱ +30–50% quote close rate, typically</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== GUARANTEE ============== -->
+  <section class="guarantee" id="guarantee">
+    <div class="container">
+      <div class="guarantee-inner">
+        <div class="guarantee-badge reveal">⚖️ The 10/90 Job-Book Guarantee</div>
+        <h2 class="guarantee-headline reveal reveal-delay-1">
+          <span class="num">10</span> jobs in <span class="num">90</span> days.<br/>Or first month free.
+        </h2>
+        <p class="guarantee-sub reveal reveal-delay-2">
+          If we don't book 10 jobs for you in your first 90 days, you pay nothing for month one. We eat the setup fee and the retainer. The risk is real and it's ours. The guarantee is in writing — clause 5 of the service agreement.
+        </p>
+        <div class="guarantee-points reveal reveal-delay-3">
+          <div class="guarantee-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> We take over your missed calls, your website enquiries, and any new leads coming in.</div>
+          <div class="guarantee-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> We respond in 30 seconds. We qualify them. We book the job into your calendar.</div>
+          <div class="guarantee-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You do the work. We do the rest.</div>
+          <div class="guarantee-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> By day 90, if we haven't booked 10 jobs for you, month one is free.</div>
+          <div class="guarantee-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> We cap at 100 leads/month per location. Fair use. No spam tactics. No bait-and-switch.</div>
+          <div class="guarantee-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> We hand over everything we built — the website, the call recordings, the customer data, the scripts, the lot.</div>
+        </div>
+        <div class="guarantee-cta reveal reveal-delay-4">
+          <a href="https://munyal.com.au/agreement" target="_blank" rel="noopener" class="btn btn-ghost">Read the full guarantee (service agreement)</a>
+          <a href="#book" class="btn btn-primary">Book a 10-min walkthrough <span class="arrow">→</span></a>
+        </div>
+        <div class="guarantee-deal">We only make money if you make money.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== INCLUDED ============== -->
+  <section class="included">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What you get</span>
+        <h2>What you get for $1,500 setup + $800/month</h2>
+        <p class="lede">The full system, live in 1–2 weeks. No upsells. No add-ons. No surprises on the invoice.</p>
+      </div>
+      <div class="included-grid reveal">
+        <div class="included-col-head">What's included</div>
+        <div class="included-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <p><strong>Missed calls answered in 30 seconds, 24/7</strong> — by a real aussie voice, not a robot menu.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <p><strong>Customers qualified and booked into your calendar</strong> while you're on a job.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <p><strong>SMS + email notification</strong> for every booking.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <p><strong>Quote follow-up sequences (24h, 72h, 7d)</strong> — most tradies leave 30–50% of quotes on the table here.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <p><strong>Google review request sent 2 hours after every job</strong> — your star rating climbs without you thinking about it.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <p><strong>Live dashboard</strong> — every call, lead, booking, and review, in one place.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <p><strong>Works alongside hipages, Oneflare, ServiceM8,</strong> or anything else you already use.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <p><strong>Indigenous-owned · Supply Nation Certified · ACMA + Privacy Act compliant · Sydney-based.</strong></p>
+        </div>
+        <div class="included-col-head no">What's NOT included (honesty = trust)</div>
+        <div class="included-item">
+          <span class="icon no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>We don't run your jobs.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>We don't send quotes on your behalf.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>We don't manage your Google Ads.</p>
+        </div>
+        <div class="included-item">
+          <span class="icon no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>We don't do your bookkeeping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PRICING ============== -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Simple pricing. No surprises. No lock-in.</h2>
+        <p class="lede">One structure, not a tiered menu. If the 10/90 guarantee doesn't hold, you don't pay for month one. That's the deal.</p>
+      </div>
+      <div class="pricing-card reveal">
+        <span class="pricing-eyebrow">The Munyal system</span>
+        <h3>$1,500 setup + $800/month + $200 per booked job</h3>
+        <p class="pricing-sub">Month-to-month. 30 days notice to leave. Everything we build is yours.</p>
+        <div class="pricing-rows">
+          <div class="pricing-row">
+            <div class="pricing-row-label"><strong>One-time setup fee</strong>Systems integration, voice AI training, calendar wiring, CRM build, missed-call text-back, scripts.</div>
+            <div class="pricing-row-value">$1,500</div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-row-label"><strong>Monthly retainer</strong>All systems live, voice AI, missed-call text-back, dashboard, weekly reporting, support.</div>
+            <div class="pricing-row-value">$800<small style="font-size:13px;color:var(--ink-3);font-weight:500;letter-spacing:0;">/mo</small></div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-row-label"><strong>Performance bonus per booked job</strong>Over and above what your current process delivers.</div>
+            <div class="pricing-row-value">$200<small style="font-size:13px;color:var(--ink-3);font-weight:500;letter-spacing:0;">/job</small></div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-row-label"><strong>Hidden fees</strong>No exit fee, no handover fee, no SMS upcharge, no per-call charges.</div>
+            <div class="pricing-row-value zero">$0</div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-row-label"><strong>Contract lock-in</strong>30 days notice to leave, any time.</div>
+            <div class="pricing-row-value zero">None</div>
+          </div>
+          <div class="pricing-row">
+            <div class="pricing-row-label"><strong>Lead cap</strong>Fair use. No spam. No bait-and-switch.</div>
+            <div class="pricing-row-value" style="font-size:18px;">100<small style="font-size:13px;color:var(--ink-3);font-weight:500;letter-spacing:0;">/mo per location</small></div>
+          </div>
+        </div>
+        <div class="pricing-call">
+          At $200 per booked job, the 10/90 guarantee is the deal. <strong>$1,500 to set up, $800 a month to run.</strong> If we don't book 10 jobs in your first 90 days, month one is free.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== WHO ============== -->
+  <section class="who">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Who this is for</span>
+        <h2>Built for Sydney tradies that look like this.</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-col yes reveal">
+          <h3><span class="dot"></span> You're a fit if</h3>
+          <ul class="who-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 1–3 crew, doing $20k–$80k/month</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You're getting inbound calls but missing some</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You're doing 5–30 jobs a month, average ticket $1,500–$8,000</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You want to grow, not just stay busy</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You're happy to turn up to the jobs we book</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You're willing to spend 30 minutes on setup</li>
+          </ul>
+        </div>
+        <div class="who-col no reveal reveal-delay-1">
+          <h3><span class="dot"></span> You're NOT a fit if</h3>
+          <ul class="who-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> If you're fully booked 4+ weeks out and turning work away — you don't need us</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> If you're doing under $10k/month, the maths probably doesn't work yet</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> If you won't turn up to the jobs we book, the system can't help you</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== VOICES ============== -->
+  <section class="voices">
+    <div class="container">
+      <div class="voices-head">
+        <div class="section-head reveal" style="margin-bottom:0;">
+          <span class="eyebrow">Early conversations</span>
+          <h2>We're just getting started. Here's what the early conversations sound like.</h2>
+        </div>
+      </div>
+      <div class="voices-grid">
+        <div class="voice reveal">
+          <blockquote>yeah nah, i miss calls all the time, especially on saturdays. if you can actually pick those up, i'm keen to chat.</blockquote>
+          <cite>— <strong>tradie</strong>, western sydney (jun 2026)</cite>
+        </div>
+        <div class="voice reveal reveal-delay-1">
+          <blockquote>the hipages leads are good but they're not the real money. the real money is the people who ring my mobile direct.</blockquote>
+          <cite>— <strong>solo tradie</strong>, northern beaches (jun 2026)</cite>
+        </div>
+        <div class="voice reveal reveal-delay-2">
+          <blockquote>winter's my planning window. if i'm not stacking the spring book in july, i'm cooked.</blockquote>
+          <cite>— <strong>2-crew business</strong>, hills district (jun 2026)</cite>
+        </div>
+      </div>
+      <div class="voices-note reveal">
+        These are placeholder voices from sales conversations. They will be replaced with verified, named, written case studies as the first 10/90 guarantee is met. No fabricated testimonials.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ ============== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <span class="eyebrow">Questions we get a lot</span>
+        <h2>Real answers, no spin.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">What's the catch with the 10/90 guarantee? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">No catch. If we don't book 10 jobs for you in your first 90 days, your first month is free — we eat the $1,500 setup and the $800 retainer for that month. The risk is real and it's ours. The guarantee is in clause 5 of the service agreement.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is this AI? I'm not ready for robots talking to my customers. <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">It's a system, built and managed by humans. The voice on the other end sounds like a real aussie tradie — because the script is built from real conversations with real tradies. You approve the wording before it goes live.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">I'm already on hipages — will this work with it? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">Yes. Hipages sends leads. We catch the calls that go straight to your phone (which is the bigger source for most tradies). They stack, they don't compete.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What if I don't get any calls to answer? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">Then we don't have a system to set up. We'll be honest about that on the walkthrough call. If your call volume is too low for the maths to work, we'll tell you, and you won't pay.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">I'm one man, is this overkill? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">One-man bands get the most value. Every missed call hurts you more than a 3-crew business, because you've got no one to pick up the slack. We don't care if you do 3 jobs a month or 30 — the system scales to whatever you've got.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What if the customer is rude or angry? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">The voice agent is trained to handle aggression politely and route urgent issues to your mobile. If a customer is genuinely upset, you get a direct SMS within 30 seconds and can call them back yourself.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you work outside my trade? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">Yes — plumbers, electricians, HVAC, roofers, builders, salons, gyms, dental practices, all Australian service businesses. Munyal Pty Ltd, Indigenous-owned, Supply Nation Certified, Sydney-based.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I see the contract before the call? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">Yes — it's at munyal.com.au/agreement. Read it, mark it up, ask questions. The 10/90 Job-Book Guarantee is in clause 5.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long does setup take? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">30 minutes of your time. We do the rest. You'll be live in 1–2 weeks.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What happens if I want to leave? <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          <div class="faq-a"><div style="padding:0 0 4px;">30 days notice in writing. No exit fee. We hand over everything (call recordings, customer data, scripts) in standard formats within 14 days.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FINAL CTA ============== -->
+  <section class="final" id="book">
+    <div class="container">
+      <div class="final-inner">
+        <h2 class="reveal">Ready to stop bleeding jobs to voicemail?</h2>
+        <p class="final-lede reveal reveal-delay-1">10 minutes. No pressure. We'll show you exactly what your first 90 days would look like. If we're not a fit, we'll say so and wish you well.</p>
+        <div class="final-ctas reveal reveal-delay-2">
+          <a href="https://munyal.com.au/book" target="_blank" rel="noopener" class="btn btn-primary">Book a 10-min walkthrough <span class="arrow">→</span></a>
+          <a href="https://munyal.com.au/agreement" target="_blank" rel="noopener" class="btn btn-ghost">Read the full guarantee first</a>
+        </div>
+        <div class="final-phone reveal reveal-delay-3">
+          Or call us direct: <a href="tel:+61485014841">0485 014 841</a> · ABN 19 728 893 833 · hello@munyal.com.au
+        </div>
+        <div class="final-divider"></div>
+        <p class="reveal" style="color:var(--ink-2);font-size:15px;line-height:1.5;">
+          <strong style="color:var(--ink);">10/90 Job-Book Guarantee:</strong> if we don't book 10 jobs for you in the first 90 days, your first month is free. We don't make money unless you do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-brand">
+            <span class="nav-mark"></span>
+            <span>Munyal</span>
+          </a>
+          <p>Munyal Pty Ltd · ABN 19 728 893 833 · Sydney NSW · Indigenous-owned · Supply Nation Certified · ACMA + Privacy Act compliant.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#guarantee">10/90 Guarantee</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://munyal.com.au" target="_blank" rel="noopener">munyal.com.au</a></li>
+            <li><a href="mailto:hello@munyal.com.au">hello@munyal.com.au</a></li>
+            <li><a href="tel:+61485014841">0485 014 841</a></li>
+            <li><a href="https://munyal.com.au/case-studies" target="_blank" rel="noopener">Case studies</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="https://munyal.com.au/agreement" target="_blank" rel="noopener">Service agreement</a></li>
+            <li><a href="https://munyal.com.au/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+            <li><a href="https://munyal.com.au/contact" target="_blank" rel="noopener">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Munyal Pty Ltd. All rights reserved.</span>
+        <span>Made in Sydney. Built for tradies who don't have time for fluff.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============== SCRIPTS ============== -->
+  <script>
+    // ---- Three.js Iridescent Orb (lazy-loaded) ----
+    (function() {
+      if (!('IntersectionObserver' in window)) return;
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+
+      let renderer, scene, camera, orb, raf, mounted = false;
+
+      const vertexShader = `
+        varying vec3 vNormal;
+        varying vec3 vViewDir;
+        varying vec3 vPosition;
+        void main() {
+          vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+          vViewDir = normalize(-mvPosition.xyz);
+          vNormal = normalize(normalMatrix * normal);
+          vPosition = position;
+          gl_Position = projectionMatrix * mvPosition;
+        }
+      `;
+
+      const fragmentShader = `
+        uniform float uTime;
+        uniform vec2 uMouse;
+        uniform vec3 uAccent;
+        uniform vec3 uAccent2;
+        varying vec3 vNormal;
+        varying vec3 vViewDir;
+        varying vec3 vPosition;
+
+        // Iridescent thin-film colour ramp
+        vec3 iridescent(float t) {
+          vec3 a = vec3(0.5, 0.5, 0.5);
+          vec3 b = vec3(0.5, 0.5, 0.5);
+          vec3 c = vec3(1.0, 1.0, 1.0);
+          vec3 d = vec3(0.00, 0.33, 0.67);
+          return a + b * cos(6.2831 * (c * t + d));
+        }
+
+        void main() {
+          float fresnel = pow(1.0 - max(dot(vNormal, vViewDir), 0.0), 2.5);
+          float band = vPosition.y * 0.5 + uTime * 0.05 + dot(vNormal, vec3(uMouse, 0.0)) * 0.4;
+          vec3 col = iridescent(band);
+          col = mix(col, uAccent2, 0.35);
+          col = mix(col * 0.5, col, fresnel);
+          // subtle base glow
+          col += uAccent * 0.04;
+          gl_FragColor = vec4(col, fresnel * 0.95);
+        }
+      `;
+
+      function init() {
+        if (mounted) return;
+        mounted = true;
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true, powerPreference: 'low-power' });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        renderer.setSize(w, h, false);
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+        camera.position.set(0, 0, 4.2);
+
+        const geo = new THREE.IcosahedronGeometry(1.0, 32);
+        const mat = new THREE.ShaderMaterial({
+          vertexShader, fragmentShader,
+          uniforms: {
+            uTime: { value: 0 },
+            uMouse: { value: new THREE.Vector2(0, 0) },
+            uAccent: { value: new THREE.Color(0x0A9688) },
+            uAccent2: { value: new THREE.Color(0x14C2A8) },
+          },
+          transparent: true,
+          depthWrite: false,
+        });
+        orb = new THREE.Mesh(geo, mat);
+        orb.scale.setScalar(1.1);
+        scene.add(orb);
+
+        const mouse = new THREE.Vector2(0, 0);
+        window.addEventListener('mousemove', (e) => {
+          mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -((e.clientY / window.innerHeight) * 2 - 1);
+        }, { passive: true });
+
+        const start = performance.now();
+        function tick(now) {
+          const t = (now - start) / 1000;
+          mat.uniforms.uTime.value = t;
+          mat.uniforms.uMouse.value.lerp(mouse, 0.05);
+          orb.rotation.y = t * 0.12;
+          orb.rotation.x = Math.sin(t * 0.08) * 0.15;
+          // subtle scroll-tied drift
+          orb.position.y = Math.sin(t * 0.4) * 0.05 - (window.scrollY * 0.0003);
+          renderer.render(scene, camera);
+          raf = requestAnimationFrame(tick);
+        }
+        raf = requestAnimationFrame(tick);
+
+        window.addEventListener('resize', onResize);
+      }
+
+      function onResize() {
+        if (!renderer) return;
+        const w = canvas.clientWidth, h = canvas.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+
+      // Lazy-load Three.js only when the hero is in view
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const s = document.createElement('script');
+            s.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
+            s.onload = init;
+            document.head.appendChild(s);
+            io.disconnect();
+          }
+        });
+      }, { rootMargin: '200px' });
+      io.observe(canvas);
+    })();
+
+    // ---- Reveal on scroll ----
+    (function() {
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach((el) => el.classList.add('in'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+      els.forEach((el) => io.observe(el));
+    })();
+
+    // ---- Nav scroll state ----
+    (function() {
+      const nav = document.getElementById('nav');
+      const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // ---- FAQ accordion ----
+    (function() {
+      document.querySelectorAll('.faq-item').forEach((item) => {
+        const btn = item.querySelector('.faq-q');
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach((i) => i.classList.remove('open'));
+          if (!isOpen) item.classList.add('open');
+        });
+      });
+    })();
+
+    // ---- Smooth-scroll for in-page anchors (respect reduced motion) ----
+    (function() {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if (id.length < 2) return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+          history.replaceState(null, '', id);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
