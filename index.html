@@ -1611,17 +1611,19 @@
       }, { threshold: 0.01 });
       const card = document.querySelector('.hero-counter');
       if (card) {
-        // Trigger immediately if the counter is already in the viewport on load
-        // (e.g. tall screens). The IntersectionObserver will trigger otherwise.
+        // Always trigger on load — the counter is the page's emotional hook,
+        // it must read real numbers immediately. No IO race conditions.
         const rect = card.getBoundingClientRect();
-        const alreadyInView = rect.top < (window.innerHeight || document.documentElement.clientHeight) - 40;
-        if (alreadyInView && !observed.has(card)) {
+        const inView = rect.top < (window.innerHeight || document.documentElement.clientHeight) + 200;
+        if (inView && !observed.has(card)) {
           observed.add(card);
           animate(document.getElementById('hc-missed'), CALLS_PER_MONTH, fmtNum);
           animate(document.getElementById('hc-walked'), jobs, fmtNum);
           animate(document.getElementById('hc-lost'), lostMonthly, fmtMoney);
           animate(document.getElementById('hc-lost-yr'), lostYearly, fmtMoney);
-        } else {
+        } else if (!observed.has(card)) {
+          // Off-screen on first load (rare — counter is at the top of a tall page).
+          // Observe and animate on first intersection.
           io.observe(card);
         }
       }
